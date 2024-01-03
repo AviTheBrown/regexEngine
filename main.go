@@ -17,30 +17,29 @@ func trimPrefixAndSuffix(regex string) string {
 func lenghtCheck(elements []string) bool {
 	return len(elements) == 0
 }
-func matchingWithDot(regex, input string) bool {
+func metaMatching(regex, input string) bool {
 	var result bool
+	metaCache := []rune{'^', '$', '.', '?', '*', '+'}
+
+	for _, r := range regex {
+		for _, m := range metaCache {
+			if strings.IndexRune(regex, m)))
+		})
+	}
 	regex = trimPrefixAndSuffix(regex)
-	if len(regex) == len(input) {
-		for i, r := range input {
-			if regex[i] != '.' && regex[i] != byte(r) {
-				result = false
-				return result
-			}
-		}
-	} else if len(regex) > len(input) {
-		result = false
-		return result
-	}
 
-	for i, r := range regex {
-		if r == '.' || r == rune(input[i]) {
-			result = true
-		} else {
-			result = false
-			break
-		}
-	}
+	// ^ stars with
+	// $ ends with
+	// . matches with
+	// * preceding char zero or more
+	// ? preceding char zero or one
+	// + preceding char one or more
+	switch result {
+	case len(regex) == len(input):
 
+	}
+	// if len(regex) == len(input) {
+	//
 	return result
 }
 
@@ -60,7 +59,7 @@ func matching(regex, input string) bool {
 	}
 
 	if len(inputElements) == 1 && !strings.HasPrefix(regex, "^") && !strings.HasSuffix(regex, "$") {
-		result = matchingWithDot(regex, input)
+		result = metaMatching(regex, input)
 		return result
 	}
 
