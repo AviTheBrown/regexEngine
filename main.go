@@ -17,15 +17,42 @@ func trimPrefixAndSuffix(regex string) string {
 func lenghtCheck(elements []string) bool {
 	return len(elements) == 0
 }
+func runeMatching(r []rune, input string) {
+
+}
 func metaMatching(regex, input string) bool {
 	var result bool
 	metaCache := []rune{'^', '$', '.', '?', '*', '+'}
+	runeIndexCache := []int{}
 
-	for _, r := range regex {
-		for _, m := range metaCache {
-			if strings.IndexRune(regex, m)))
-		})
+	for _, metaChar := range metaCache {
+		index := strings.IndexRune(regex, metaChar)
+		if index != -1 {
+			fmt.Println(index)
+			runeIndexCache = append(runeIndexCache, index)
+		}
 	}
+
+	fmt.Println(runeIndexCache)
+
+	// for _, r := range regex {
+	// 	for _, c := range input {
+	// 		fmt.Printf("r is: %v\n", string(r))
+	// 		fmt.Printf("c is: %v\n", string(c))
+	// 	}
+	// fmt.Println(string(r))
+	// for _, m := range metaCache {
+	// 	fmt.Println(string(r))
+	// 	if r == m {
+	// 		fmt.Println(string(r), string(m))
+	// 	}
+	// 	runeIndex := strings.IndexRune(regex, r)
+	// 	// runeIdex := strings.IndexRune(regex, m)
+	// 	fmt.Println(runeIndex)
+	// 	runeIndexCache = append(runeIndexCache, runeIndex)
+	// 	// defer runeMatching(rune(runeIdex), input)
+	// }
+	// }
 	regex = trimPrefixAndSuffix(regex)
 
 	// ^ stars with
@@ -34,12 +61,12 @@ func metaMatching(regex, input string) bool {
 	// * preceding char zero or more
 	// ? preceding char zero or one
 	// + preceding char one or more
-	switch result {
-	case len(regex) == len(input):
+	// switch result {
+	// case len(regex) == len(input):
 
-	}
-	// if len(regex) == len(input) {
-	//
+	// }
+	// // if len(regex) == len(input) {
+	// //
 	return result
 }
 
