@@ -17,24 +17,25 @@ func trimPrefixAndSuffix(regex string) string {
 func lenghtCheck(elements []string) bool {
 	return len(elements) == 0
 }
-func runeMatching(r []rune, input string) {
+func runeMatching(runes []string, indices []int, regex, input string) {
 
+	fmt.Println(regex, input)
+	fmt.Println(runes, indices)
 }
 func metaMatching(regex, input string) bool {
 	var result bool
-	metaCache := []rune{'^', '$', '.', '?', '*', '+'}
+	metaCache := []rune{'^', '.', '$', '?', '*', '+'}
 	runeIndexCache := []int{}
+	runeCharCache := []string{}
 
 	for _, metaChar := range metaCache {
 		index := strings.IndexRune(regex, metaChar)
 		if index != -1 {
-			fmt.Println(index)
 			runeIndexCache = append(runeIndexCache, index)
+			runeCharCache = append(runeCharCache, string(metaChar))
 		}
 	}
-
-	fmt.Println(runeIndexCache)
-
+	runeMatching(runeCharCache, runeIndexCache, trimPrefixAndSuffix(regex), input)
 	// for _, r := range regex {
 	// 	for _, c := range input {
 	// 		fmt.Printf("r is: %v\n", string(r))
